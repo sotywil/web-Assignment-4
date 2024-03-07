@@ -10,62 +10,60 @@
 *
 ********************************************************************************/
 
-const express = require('express'); // "require" the Express module
-const path = require('path');
-const app = express(); // obtain the "app" object
-
-const HTTP_PORT = process.env.PORT || 8080; // assign a port
-
-
-app.use(express.static('public')); 
+const express = require("express");
+const app = express();
+var HTTP_PORT = process.env.PORT || 8080;
 const unCountryData = require("./modules/unCountries");
+app.use(express.static("public"));
+app.set("view engine", "ejs");
 
-unCountryData.Initialize()
-  .then(() => {
-
-// start the server on the port and output a confirmation to the console
-app.listen(HTTP_PORT, () => console.log(`server listening on: ${HTTP_PORT}`));
-    
-  })
-  .catch(error => console.error('Error initializing data:', error));
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '/views/home.html'));
+app.get("/", (req, res) => {
+  res.render("home");
 });
 
 app.get("/about", (req, res) => {
-  res.sendFile(path.join(__dirname, '/views/about.html'));
+  res.render("about");
 });
 
-app.get('/un/countries', (req, res) => {
-  const region = req.query.region;
-
-  if (region) {
-    unCountryData.getCountriesByRegion(region)
-      .then(countries => res.json(countries))
-      .catch(error => res.status(404).send('Error: ' + error.message));
-  } 
-  else {
-    unCountryData.getAllCountries()
-      .then(countries => res.json(countries))
-      .catch(error => res.status(404).send('Error: ' + error.message));
+app.get("/un/countries", async (req, res, next) => {
+  try {
+    let countries;
+    const region = req.query.region;
+    if (region) {
+      countries = await unCountryData.getCountriesByRegion(region);
+      res.render("countries", { countries });
+    } else {
+      countries = await unCountryData.getAllCountries();
+      res.render("countries", { countries });
+    }
+  } catch (error) {
+    next(error);
   }
 });
 
-app.get('/un/countries/:a2Code', (req, res) => {
-  const countryCode = req.params.a2Code; 
-
-  if (!countryCode) {
-    return res.status(404).send('Invalid request. Missing a2Code parameter.');
-  }
-
-  if(countryCode){
-    unCountryData.getCountryByCode(countryCode)
-    .then(country => res.json(country))
-    .catch(error => res.status(404).send('Error: ' + error.message));
+app.get("/un/countries/:countryCode", async (req, res, next) => {
+  try {
+    const countryCode = req.params.countryCode;
+    let country = await unCountryData.getCountryByCode(countryCode);
+    res.render("country", { country: country });
+  } catch (error) {
+    next(error);
   }
 });
 
-app.use((req, res, next) => {
-  res.status(404).sendFile(path.join(__dirname, "/views/404.html" ));
+app.use((err, req, res, next) => {
+  res.status(404).render("404", {
+    message: "I'm sorry, we're unable to find what you're looking for",
+  });
 });
+
+unCountryData
+  .Initialize()
+  .then(() => {
+    app.listen(HTTP_PORT, () =>
+      console.log(`Server is listening on: ${HTTP_PORT}`)
+    );
+  })
+  .catch((err) => {
+    console.log("Error: ", err);
+  });
