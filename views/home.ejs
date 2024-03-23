@@ -1,136 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UN Countries</title>
     <link rel="stylesheet" href="/css/main.css" />
-  </head>
-  <body tabindex="-1" class="pb-11">
-    <%- include('partials/navbar', {page: 'Home', route: '/'}) %>
-    <main class="pb-5">
-      <div class="container mx-auto">
-        <div class="hero bg-base-200 rounded-lg p-6">
-          <div class="hero-content text-center">
-            <div class="max-w-md">
-              <h1 class="text-5xl font-bold">Welcome</h1>
-              <p class="py-6">
-                This application provides information about the 193 member
-                states of the United Nations. The followings are the five
-                permanent members of the United Nations Security Council.
-              </p>
-              <a href="/un/countries">
-                <button class="btn btn-primary text-xl">Get Started Now</button>
-              </a>
-            </div>
-          </div>
-        </div>
+    <title>UN Countries</title>
+</head>
 
-        <br />
-
-        <div class="grid grid-cols-3 gap-4">
-          <div>
-            <div class="card bg-base-100 shadow-xl">
-              <figure>
-                <img
-                  class="w-full"
-                  src="https://flagcdn.com/w320/cn.png"
-                  alt="Shoes"
-                />
-              </figure>
-              <div class="card-body">
-                <h2 class="card-title">China</h2>
-                <p>An United Nations Security Council Permanent Member</p>
-                <div class="card-actions justify-end">
-                  <a href="/un/countries/ca">
-                    <button class="btn btn-primary text-xl">View</button>
-                  </a>
+<body tabindex="-1">
+    <%- include('partials/navbar', {page: '/home'}) %>
+    <div class="container mx-auto">
+        <div class="hero bg-base-200 rounded-box p-2">
+            <div class="hero-content text-center">
+                <div class="max-w-md">
+                    <h1 class="text-5xl font-bold">Welcome</h1>
+                    <p class="py-6">This application provides information about the 193 member states of the United
+                        Nations. The followings are the five permanent members of the United Nations Security Council.
+                    </p>
+                    <button class="btn btn-primary"><a href="/un/countries">Get Started Now</a></button>
                 </div>
-              </div>
             </div>
-          </div>
-          <div>
-            <div class="card bg-base-100 shadow-xl">
-              <figure>
-                <img
-                  class="w-full"
-                  src="https://flagcdn.com/w320/fr.png"
-                  alt="Shoes"
-                />
-              </figure>
-              <div class="card-body">
-                <h2 class="card-title">France</h2>
-                <p>An United Nations Security Council Permanent Member</p>
-                <div class="card-actions justify-end">
-                  <a href="/un/countries/fr">
-                    <button class="btn btn-primary text-xl">View</button>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="card bg-base-100 shadow-xl">
-              <figure>
-                <img
-                  class="w-full"
-                  src="https://flagcdn.com/w320/ru.png"
-                  alt="Shoes"
-                />
-              </figure>
-              <div class="card-body">
-                <h2 class="card-title">Russian Federation</h2>
-                <p>An United Nations Security Council Permanent Member</p>
-                <div class="card-actions justify-end">
-                  <a href="/un/countries/ru">
-                    <button class="btn btn-primary text-xl">View</button>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="card bg-base-100 shadow-xl">
-              <figure>
-                <img
-                  class="w-full"
-                  src="https://flagcdn.com/w320/gb.png"
-                  alt="Shoes"
-                />
-              </figure>
-              <div class="card-body">
-                <h2 class="card-title">United Kingdom</h2>
-                <p>An United Nations Security Council Permanent Member</p>
-                <div class="card-actions justify-end">
-                  <a href="/un/countries/gb">
-                    <button class="btn btn-primary text-xl">View</button>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="card bg-base-100 shadow-xl">
-              <figure>
-                <img
-                  class="w-full"
-                  src="https://flagcdn.com/w320/us.png"
-                  alt="Shoes"
-                />
-              </figure>
-              <div class="card-body">
-                <h2 class="card-title">United States</h2>
-                <p>An United Nations Security Council Permanent Member</p>
-                <div class="card-actions justify-end">
-                  <a href="/un/countries/us">
-                    <button class="btn btn-primary text-xl">View</button>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-    </main>
-  </body>
+        <br>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="card bg-base-100 shadow-xl">
+                <figure>
+                    <img class="w-full" src="https://flagcdn.com/cn.svg" alt="China" />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">China</h2>
+                    <p>Add Text here</p>
+                    <div class="card-actions justify-end">
+                        <button class="btn btn-primary"><a href="/un/countries/cn">View</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="card bg-base-100 shadow-xl">
+                <figure>
+                    <img class="w-full" src="https://flagcdn.com/fr.svg" alt="France" />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">France</h2>
+                    <p>Add text here.</p>
+                    <div class="card-actions justify-end">
+                        <button class="btn btn-primary"><a href="/un/countries/fr">View</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="card bg-base-100 shadow-xl">
+                <figure>
+                    <img class="w-full" src="https://flagcdn.com/ru.svg" alt="Russia" />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">Russian Federation</h2>
+                    <p>Add text here</p>
+                    <div class="card-actions justify-end">
+                        <button class="btn btn-primary"><a href="/un/countries/ru">View</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="card bg-base-100 shadow-xl">
+                <figure>
+                    <img class="w-full" src="https://flagcdn.com/gb.svg" alt="United Kingdom" />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">The United Kingdom</h2>
+                    <p>Add text here<p>
+                    <div class="card-actions justify-end">
+                        <button class="btn btn-primary"><a href="/un/countries/gb">View</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="card bg-base-100 shadow-xl">
+                <figure>
+                    <img class="w-full" src="https://flagcdn.com/us.svg" alt="United States" />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">The United States</h2>
+                    <p>Add text here</p>
+                    <div class="card-actions justify-end">
+                        <button class="btn btn-primary"><a href="/un/countries/us">View</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>
+
